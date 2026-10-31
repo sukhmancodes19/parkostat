@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ParkSense — Business Model Canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#15181B;
+    --panel:#1C2126;
+    --panel-2:#20262C;
+    --paint:#F3F0E6;
+    --paint-dim:#B9B6AC;
+    --muted:#828A92;
+    --green:#33C77B;
+    --green-dim:#1F5E42;
+    --amber:#FF7A45;
+    --amber-dim:#6E3A22;
+    --dash: rgba(243,240,230,0.16);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--asphalt);
+    color:var(--paint);
+    font-family:'IBM Plex Sans',sans-serif;
+    padding:40px 32px 60px;
+  }
+  .wrap{max-width:1280px;margin:0 auto;}
+
+  /* header */
+  .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    border-bottom:1px dashed var(--dash);
+    padding-bottom:22px;
+    margin-bottom:26px;
+    flex-wrap:wrap;
+  }
+  .brand-row{display:flex;align-items:center;gap:12px;}
+  .mark{
+    width:34px;height:34px;border:2px solid var(--green);border-radius:6px;
+    position:relative;flex:none;
+  }
+  .mark::after{
+    content:"";position:absolute;inset:7px;border:1.5px solid var(--green);border-radius:2px;
+    box-shadow:0 0 0 2px var(--asphalt) inset;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:30px;
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .tagline{
+    color:var(--paint-dim);
+    font-size:14.5px;
+    margin-top:4px;
+  }
+  .badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--green);
+    border:1px solid var(--green-dim);
+    background:rgba(51,199,123,0.08);
+    padding:5px 10px;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+  .subnote{
+    font-size:12px;
+    color:var(--muted);
+    max-width:520px;
+    text-align:right;
+    line-height:1.5;
+  }
+
+  /* problem strip */
+  .problem-strip{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap:14px;
+    margin-bottom:28px;
+  }
+  .p-card{
+    background:var(--panel);
+    border:1px solid var(--dash);
+    border-radius:8px;
+    padding:14px 16px;
+  }
+  .p-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:6px;
+  }
+  .p-body{font-size:13px;color:var(--paint-dim);line-height:1.55;}
+  .p-body b{color:var(--paint);font-weight:600;}
+
+  /* canvas grid */
+  .canvas-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 12px 2px;
+  }
+  .bmc{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1.15fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap:0;
+    border:1px dashed var(--dash);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .cell{
+    border-right:1px dashed var(--dash);
+    border-bottom:1px dashed var(--dash);
+    padding:16px 15px 14px;
+    position:relative;
+    background:var(--panel);
+    min-height:150px;
+  }
+  .cell:nth-child(5n){border-right:none;}
+  .cell.tall{grid-row: 1 / 3;}
+  .cell.vp{background:var(--panel-2);}
+
+  /* reticle corners — signature element */
+  .cell::before, .cell::after{
+    content:"";position:absolute;width:9px;height:9px;
+    border-color:var(--green-dim);
+    opacity:0.9;
+  }
+  .cell::before{top:8px;left:8px;border-top:1.5px solid var(--green-dim);border-left:1.5px solid var(--green-dim);}
+  .cell::after{bottom:8px;right:8px;border-bottom:1.5px solid var(--green-dim);border-right:1.5px solid var(--green-dim);}
+  .cell.vp::before,.cell.vp::after{border-color:var(--green);}
+
+  .c-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:0.05em;
+  }
+  .c-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    color:var(--paint);
+    margin:4px 0 10px;
+  }
+  .cell.vp .c-title{color:var(--green);font-size:15px;}
+  ul.c-list{list-style:none;margin:0;padding:0;}
+  ul.c-list li{
+    font-size:12.3px;
+    line-height:1.5;
+    color:var(--paint-dim);
+    padding-left:12px;
+    position:relative;
+    margin-bottom:7px;
+  }
+  ul.c-list li::before{
+    content:"–";position:absolute;left:0;color:var(--muted);
+  }
+  .cell.vp ul.c-list li{color:#DCE4E0;}
+  .cell.vp ul.c-list li::before{content:"›";color:var(--green);}
+
+  .stat-row{
+    display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;
+  }
+  .stat{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    background:rgba(51,199,123,0.1);
+    border:1px solid var(--green-dim);
+    color:var(--green);
+    padding:4px 8px;
+    border-radius:4px;
+  }
+
+  /* bottom row: cost / revenue */
+  .bottom-row{
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+  }
+  .bottom-row .cell{border-bottom:none;min-height:130px;}
+
+  /* revenue numbers */
+  .rev-figures{
+    display:flex;gap:20px;margin-top:10px;flex-wrap:wrap;
+  }
+  .rev-fig{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .rev-fig .num{font-size:18px;color:var(--amber);font-weight:600;display:block;}
+  .rev-fig .lbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* footer strip */
+  .footer{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:14px;
+    margin-top:24px;
+  }
+  .f-card{
+    background:var(--panel);
+    border:1px solid var(--dash);
+    border-radius:8px;
+    padding:16px 18px;
+  }
+  .f-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;font-weight:600;color:var(--paint);margin:0 0 10px;
+  }
+  .f-title .tag{color:var(--amber);}
+  .win-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;}
+  .win-item{font-size:12px;color:var(--paint-dim);line-height:1.5;padding-left:11px;position:relative;}
+  .win-item::before{content:"›";position:absolute;left:0;color:var(--green);}
+
+  .comp-table{width:100%;border-collapse:collapse;font-size:11.5px;}
+  .comp-table th{
+    text-align:left;color:var(--muted);font-weight:500;font-family:'IBM Plex Mono',monospace;
+    font-size:10px;text-transform:uppercase;letter-spacing:0.04em;
+    padding:0 8px 8px 0;border-bottom:1px dashed var(--dash);
+  }
+  .comp-table td{padding:6px 8px 6px 0;color:var(--paint-dim);border-bottom:1px dashed rgba(243,240,230,0.08);}
+  .comp-table tr:last-child td{border-bottom:none;}
+  .comp-table td.name{color:var(--paint);font-weight:500;}
+  .comp-table td.weak{color:var(--amber);}
+
+  .foot-note{
+    margin-top:20px;font-size:11px;color:var(--muted);text-align:center;
+    border-top:1px dashed var(--dash);padding-top:14px;
+  }
+
+  @media (max-width:980px){
+    .bmc{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+    .cell.tall{grid-row:auto;}
+    .cell:nth-child(5n){border-right:1px dashed var(--dash);}
+    .bottom-row{grid-template-columns:1fr;}
+    .problem-strip, .footer{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div>
+      <div class="brand-row">
+        <div class="mark"></div>
+        <div>
+          <h1>ParkSense</h1>
+          <div class="tagline">AI-powered smart parking detection — wireless sensors, live occupancy, predictive analytics</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+      <span class="badge">Business Model Canvas</span>
+    </div>
+  </div>
+
+  <div class="problem-strip">
+    <div class="p-card">
+      <div class="p-label">The problem</div>
+      <div class="p-body">Drivers waste time hunting for parking in malls, hospitals, airports, universities and office garages — causing <b>congestion, fuel waste, and lost revenue</b> for property owners.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-label">Why incumbents fail</div>
+      <div class="p-body">Bosch, Siemens, ParkHelp and SKIDATA charge <b>$250–600 per space</b> with wired installs, proprietary lock-in, and poor scalability.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-label">Our wedge</div>
+      <div class="p-body">Wireless sensors + AI detection at a target <b>₹700–1,500 per space</b> — installed in minutes, priced for mid-market deployment.</div>
+    </div>
+  </div>
+
+  <div class="canvas-title">The nine building blocks</div>
+  <div class="bmc">
+    <div class="cell tall">
+      <div class="c-num">01</div>
+      <div class="c-title">Key partners</div>
+      <ul class="c-list">
+        <li>Component suppliers — ESP32, ultrasonic/mmWave modules, LoRa radios</li>
+        <li>Electrical & installation contractors for site rollouts</li>
+        <li>Cloud infrastructure providers</li>
+        <li>Parking-system integrators (SKIDATA, ParkHelp) for interoperability, not head-on rivalry</li>
+        <li>1–2 anchor pilot sites as reference customers</li>
+      </ul>
+    </div>
+
+    <div class="cell">
+      <div class="c-num">02</div>
+      <div class="c-title">Key activities</div>
+      <ul class="c-list">
+        <li>Sensor & firmware R&D</li>
+        <li>Occupancy AI model training</li>
+        <li>Cloud dashboard & API development</li>
+        <li>Field installation & calibration</li>
+        <li>Pilot sales & account management</li>
+      </ul>
+    </div>
+
+    <div class="cell vp tall">
+      <div class="c-num">03</div>
+      <div class="c-title">Value propositions</div>
+      <ul class="c-list">
+        <li>A fraction of incumbent cost — target ₹700–1,500/space vs $250–600 industry norm</li>
+        <li>Wireless, no-drilling install — minutes, not days</li>
+        <li>Live occupancy + predictive demand via cloud dashboard and open API</li>
+        <li>No proprietary lock-in — modular hardware, standard integrations</li>
+        <li>Scales floor-by-floor without new controllers or servers</li>
+      </ul>
+      <div class="stat-row">
+        <span class="stat">~70–80% cheaper install</span>
+        <span class="stat">Minutes to deploy</span>
+        <span class="stat">Recurring SaaS</span>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="c-num">04</div>
+      <div class="c-title">Customer relationships</div>
+      <ul class="c-list">
+        <li>Hands-on pilot deployment & onboarding</li>
+        <li>Dedicated account manager for enterprise sites</li>
+        <li>Self-serve analytics dashboard</li>
+        <li>Long-term relationship via subscription</li>
+      </ul>
+    </div>
+
+    <div class="cell tall">
+      <div class="c-num">05</div>
+      <div class="c-title">Customer segments</div>
+      <ul class="c-list">
+        <li>Shopping malls</li>
+        <li>Hospitals</li>
+        <li>Airports</li>
+        <li>Universities & IT parks</li>
+        <li>Commercial parking operators — 500–1,000+ space garages</li>
+      </ul>
+    </div>
+
+    <div class="cell">
+      <div class="c-num">06</div>
+      <div class="c-title">Key resources</div>
+      <ul class="c-list">
+        <li>Low-cost sensor design — target ₹700–1,500 BOM</li>
+        <li>Wireless mesh stack tuned for concrete (LoRa/BLE)</li>
+        <li>Occupancy AI models & training data</li>
+        <li>Cloud platform & API</li>
+        <li>Founding hardware/firmware team</li>
+      </ul>
+    </div>
+
+    <div class="cell">
+      <div class="c-num">07</div>
+      <div class="c-title">Channels</div>
+      <ul class="c-list">
+        <li>Direct enterprise sales to facility managers</li>
+        <li>Paid pilot programs — proof of value before scale-up</li>
+        <li>Smart-infrastructure trade shows</li>
+        <li>Referrals via parking-system integrators</li>
+      </ul>
+    </div>
+
+    <div class="bottom-row" style="grid-column:1/6;display:contents;">
+      <div class="cell" style="grid-column:1/3;">
+        <div class="c-num">08</div>
+        <div class="c-title">Cost structure</div>
+        <ul class="c-list">
+          <li>Hardware manufacturing — ~₹1,200 BOM/sensor</li>
+          <li>Installation & field labor — ~₹2L per 500-space site</li>
+          <li>Cloud infra & support — ~₹10k/month/site</li>
+          <li>R&D — prototyping, PCB, enclosures (~₹1.5–2L)</li>
+          <li>Legal & company formation (~₹30–80k)</li>
+        </ul>
+        <div class="stat-row"><span class="stat" style="border-color:var(--amber-dim);color:var(--amber);background:rgba(255,122,69,0.08);">Target &gt;40% hardware margin</span></div>
+      </div>
+      <div class="cell vp" style="grid-column:3/6;border-right:none;">
+        <div class="c-num">09</div>
+        <div class="c-title">Revenue streams</div>
+        <ul class="c-list">
+          <li>Hardware sale — ₹1,200/sensor, one-time, funds deployment</li>
+          <li>SaaS subscription — ₹40–100/space/month, recurring</li>
+          <li>Support & maintenance contracts</li>
+        </ul>
+        <div class="rev-figures">
+          <div class="rev-fig"><span class="num">₹40k–1L</span><span class="lbl">MRR at 1,000 spaces</span></div>
+          <div class="rev-fig"><span class="num">₹3–4L</span><span class="lbl">ARR, 500-space site</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="f-card">
+      <div class="f-title">Where we actually <span class="tag">win</span></div>
+      <div class="win-grid">
+        <div class="win-item">Installation simplicity — minutes, minimal wiring</div>
+        <div class="win-item">Lower total cost of ownership</div>
+        <div class="win-item">Software platform — occupancy, analytics, integrations</div>
+        <div class="win-item">Reliability across dust, light, vehicle types</div>
+        <div class="win-item">Scalability — floor to full complex</div>
+        <div class="win-item">MVP stack: ESP32 + ultrasonic + LoRa/Wi-Fi</div>
+      </div>
+    </div>
+    <div class="f-card">
+      <div class="f-title">Competitive landscape</div>
+      <table class="comp-table">
+        <tr><th>Player</th><th>Approach</th><th>Weakness</th></tr>
+        <tr><td class="name">Bosch</td><td>Ultrasonic + cameras</td><td class="weak">Expensive install</td></tr>
+        <tr><td class="name">Siemens</td><td>Smart infrastructure</td><td class="weak">Enterprise-only pricing</td></tr>
+        <tr><td class="name">ParkHelp</td><td>Overhead ultrasonic</td><td class="weak">High install cost</td></tr>
+        <tr><td class="name">SKIDATA</td><td>Full parking systems</td><td class="weak">Complex deployment</td></tr>
+        <tr><td class="name">INDECT</td><td>Camera + sensor</td><td class="weak">Privacy concerns</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
